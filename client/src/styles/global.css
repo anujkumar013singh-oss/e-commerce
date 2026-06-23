@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #FFFFFF; }
+  ::-webkit-scrollbar-thumb { background: #D94F3D; border-radius: 3px; }
+  ::selection { background: #D94F3D; color: #FFFFFF; }
+}
+
+@layer components {
+  .marquee-track {
+    animation: marquee 15s linear infinite;
+    display: flex;
+    white-space: nowrap;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-track-reverse {
+    animation: marquee-reverse 15s linear infinite;
+    display: flex;
+    white-space: nowrap;
+  }
+  .marquee-track-reverse:hover { animation-play-state: paused; }
+  .marquee-track-left {
+    animation: marquee 30s linear infinite;
+    display: flex;
+  }
+  .marquee-track-right {
+    animation: marquee-reverse 30s linear infinite;
+    display: flex;
+  }
+  .btn-gold {
+    @apply border border-[#D94F3D] text-[#D94F3D] px-8 py-3 rounded-full text-sm tracking-widest font-medium transition-all duration-300 hover:bg-[#D94F3D] hover:text-white;
+  }
+  .btn-black {
+    @apply bg-[#D94F3D] text-white px-8 py-3 rounded-full text-sm tracking-widest font-medium transition-all duration-300 hover:bg-[#b33d2e];
+  }
+  .section-heading {
+    @apply font-display text-4xl md:text-5xl text-center text-[#0A0A0A] mb-12 tracking-wide;
+  }
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+  .card-hover:hover img {
+    transform: scale(1.04);
+  }
+  .card-hover .card-border {
+    @apply border-b-2 border-transparent transition-all duration-300;
+  }
+  .card-hover:hover .card-border {
+    @apply border-[#D94F3D];
+  }
+  .text-gold {
+    color: #D94F3D;
+  }
+  .bg-gold {
+    background-color: #D94F3D;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 79, 61, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(217, 79, 61, 0); }
+}
